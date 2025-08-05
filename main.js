@@ -3,30 +3,53 @@ import * as fox from 'fetchfox-sdk';
 const main = async () => {
   fox.configure({
     apiKey: process.env.FETCHFOX_API_KEY,
+    host: 'https://dev.api.fetchfox.ai',
   });
 
-  console.log('ff examples');
+  // const urls = [
+  //   'https://sketchfab.com/3d-models/fnaf-hw-repair-freddy-8b24da0769d34cebbf40fa3b2df4dcac',
+  //   'https://sketchfab.com/3d-models/freddy-fazbear-ba9d51bcfdb94ca7a0f0fc6b96a9baac',
+  //   'https://sketchfab.com/3d-models/freddy-fnaf-1-3f6aaac83bf6446dab57bbd8046b6d93',
+  //   'https://sketchfab.com/3d-models/bendy-and-the-ink-machine-alpha-map-8e768b98eaea42c0acee00b726bf475d',
+  //   'https://sketchfab.com/3d-models/bendy-final-version-pinky-update-de26501dac90469b85fedf152b25105a',
+  //   'https://sketchfab.com/3d-models/concept-bendy-1107d0843d424458acc6d3b736847695',
+  //   'https://www.artstation.com/marketplace/p/LGgy5/monster-model',
+  //   'https://sketchfab.com/3d-models/out-of-the-ink-machine-ollie-d6f785f2fa0d4740858fe3246373a388',
+  //   'https://sketchfab.com/3d-models/bendy-chapter-1-map-ccb90c2c2b3a4b3ebff26715a34d783d',
+  //   'https://www.artstation.com/marketplace/p/p03Pk/batdr-chapter-2-map-complete',
+  //   'https://www.artstation.com/marketplace/p/oBL1m/stylized-skeleton-soldier-mobile-game-ready-model',
+  //   'https://www.artstation.com/marketplace/p/oVNDB/batim-chapter-4',
+  //   'https://sketchfab.com/3d-models/all-cutout-from-bendy-and-the-dark-revival-bb9a59e190464ace8916f62c21f9d246',
+  //   'https://sketchfab.com/3d-models/striker-81088cb56aab4af28255d59e0589707a',
+  //   'https://sketchfab.com/3d-models/batim-beast-bendy-rig-f91b9991d66f4f4b8103d5bf55b9496c',
+  //   'https://www.artstation.com/marketplace/p/kxjOy/blind-bat-monster-low-poly-3d-model',
+  //   'https://www.artstation.com/marketplace/p/XKz15/felix-the-cat-3d-print-model',
+  //   'https://www.artstation.com/marketplace/p/OyRwe/batim-chapter-3-in-update',
+  //   'https://sketchfab.com/3d-models/sammy-lawrence-184b38c3b580443d9490f3d0cd1f0836',
+  // ];
 
   const urls = [
-    'https://sketchfab.com/3d-models/fnaf-hw-repair-freddy-8b24da0769d34cebbf40fa3b2df4dcac',
-    'https://sketchfab.com/3d-models/freddy-fazbear-ba9d51bcfdb94ca7a0f0fc6b96a9baac',
-    'https://sketchfab.com/3d-models/freddy-fnaf-1-3f6aaac83bf6446dab57bbd8046b6d93',
-    'https://sketchfab.com/3d-models/bendy-and-the-ink-machine-alpha-map-8e768b98eaea42c0acee00b726bf475d',
-    'https://sketchfab.com/3d-models/bendy-final-version-pinky-update-de26501dac90469b85fedf152b25105a',
-    'https://sketchfab.com/3d-models/concept-bendy-1107d0843d424458acc6d3b736847695',
-    'https://www.artstation.com/marketplace/p/LGgy5/monster-model',
-    'https://sketchfab.com/3d-models/out-of-the-ink-machine-ollie-d6f785f2fa0d4740858fe3246373a388',
-    'https://sketchfab.com/3d-models/bendy-chapter-1-map-ccb90c2c2b3a4b3ebff26715a34d783d',
-    'https://www.artstation.com/marketplace/p/p03Pk/batdr-chapter-2-map-complete',
-    'https://www.artstation.com/marketplace/p/oBL1m/stylized-skeleton-soldier-mobile-game-ready-model',
-    'https://www.artstation.com/marketplace/p/oVNDB/batim-chapter-4',
-    'https://sketchfab.com/3d-models/all-cutout-from-bendy-and-the-dark-revival-bb9a59e190464ace8916f62c21f9d246',
-    'https://sketchfab.com/3d-models/striker-81088cb56aab4af28255d59e0589707a',
-    'https://sketchfab.com/3d-models/batim-beast-bendy-rig-f91b9991d66f4f4b8103d5bf55b9496c',
-    'https://www.artstation.com/marketplace/p/kxjOy/blind-bat-monster-low-poly-3d-model',
-    'https://www.artstation.com/marketplace/p/XKz15/felix-the-cat-3d-print-model',
-    'https://www.artstation.com/marketplace/p/OyRwe/batim-chapter-3-in-update',
-    'https://sketchfab.com/3d-models/sammy-lawrence-184b38c3b580443d9490f3d0cd1f0836',
+    "https://www.fab.com/listings/1be6641a-a71c-45eb-af56-98679efd50e3",
+    "https://www.fab.com/listings/0c8f3917-2461-4775-a853-b995bb93bac5",
+    "https://www.artstation.com/marketplace/p/Oyzye/dinosaur-game-ready-low-poly",
+    "https://www.fab.com/listings/499c57d9-c256-4179-9bad-662cd8ac8443",
+    "https://www.artstation.com/marketplace/p/A7q85/rocking-toy-horse-low-poly-3d-model",
+    "https://www.fab.com/listings/70481934-069c-43f8-8eb8-42e453e5b281",
+    "https://www.artstation.com/marketplace/p/Noerk/dinosaur-low-poly-game-ready",
+    "https://www.fab.com/listings/1be6641a-a71c-45eb-af56-98679efd50e3",
+    "https://www.fab.com/listings/0c8f3917-2461-4775-a853-b995bb93bac5",
+    "https://www.artstation.com/marketplace/p/Oyzye/dinosaur-game-ready-low-poly",
+    "https://www.fab.com/listings/499c57d9-c256-4179-9bad-662cd8ac8443",
+    "https://www.artstation.com/marketplace/p/A7q85/rocking-toy-horse-low-poly-3d-model",
+    "https://www.fab.com/listings/70481934-069c-43f8-8eb8-42e453e5b281",
+    "https://www.artstation.com/marketplace/p/Noerk/dinosaur-low-poly-game-ready",
+    "https://www.fab.com/listings/1be6641a-a71c-45eb-af56-98679efd50e3",
+    "https://www.fab.com/listings/0c8f3917-2461-4775-a853-b995bb93bac5",
+    "https://www.artstation.com/marketplace/p/Oyzye/dinosaur-game-ready-low-poly",
+    "https://www.fab.com/listings/499c57d9-c256-4179-9bad-662cd8ac8443",
+    "https://www.artstation.com/marketplace/p/A7q85/rocking-toy-horse-low-poly-3d-model",
+    "https://www.fab.com/listings/70481934-069c-43f8-8eb8-42e453e5b281",
+    "https://www.artstation.com/marketplace/p/Noerk/dinosaur-low-poly-game-ready",
   ];
 
   const template = {
@@ -44,10 +67,19 @@ const main = async () => {
   const out = await fox.extract({
     urls,
     template,
-    proxy: 'datacenter',
+    proxy: 'auto',
   });
   console.log(out);
   console.log(out.results.items);
+
+  const metrics = out.metrics;
+  const total = out.results.items.length;
+  const blocks = out.results.items.filter(it => it._status == 'block').length;
+
+  console.log(metrics);
+  console.log('total ', total);
+  console.log('blocks', blocks);
+
   process.exit(0);
 }
 
